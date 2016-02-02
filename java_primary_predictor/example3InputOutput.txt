@@ -1,0 +1,19 @@
+Input:
+
+NJ
+6
+AA FL 0 0 0
+BB NY 322 9 3
+CC NJ 100 42 2
+DD PA 9 7 8
+EE CA 56 0 0
+FF VA 21 0 0
+
+Output:
+
+AA 0
+BB 76
+CC 132
+DD 67
+EE 5
+FF 2

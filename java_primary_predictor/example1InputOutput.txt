@@ -1,0 +1,13 @@
+Input:
+
+NH
+3
+HC NY 78 21 1
+MO MD 30 10 0
+BS VT 93 15 0
+
+Output:
+
+HC 33
+MO 13
+BS 44

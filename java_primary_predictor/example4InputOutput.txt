@@ -1,0 +1,17 @@
+Input:
+
+ME
+5
+KP MA 0 0 0
+JZ NY 211 0 5
+SA NJ 100 10 4
+ZD WA 26 5 4
+CA AK 22 1 1
+
+Output:
+
+KP 20
+JZ 46
+SA 40
+ZD 27
+CA 8
