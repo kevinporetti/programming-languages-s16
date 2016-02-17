@@ -1,0 +1,46 @@
+Script started on Wed 17 Feb 2016 05:53:13 PM EST
+]0;porett96@elvis:~[porett96@elvis ~]$ scheme48
+Welcome to Scheme 48 1.9 (made by root on 2013-09-19)
+See http://s48.org/ for more information.
+Please report bugs to scheme-48-bugs@s48.org.
+Get more information at http://www.s48.org/.
+Type ,? (comma question-mark) for help.
+> ,load p scheme_primary_predictor
+> (predict 'NH
+	'( (HC NY 78 21 1)
+	   (MO MD 30 10 0)
+	   (BS VT 93 15 0) ))
+((hc . 33) (mo . 13) (bs . 44))
+> (predict 'FL
+	'( (JB FL 113 8 5)
+	   (BC MD 163 9 3)
+	   (CC NJ 95 4 3)
+	   (TC TX 210 6 5)
+	   (CF CA 40 1 0)
+	   (JG VA 22 1 0)
+	   (MH AR 25 2 0)
+	   (JK OK 35 9 2)
+	   (RP KY 13 2 0) 
+	   (MR FL 135 5 5)
+	   (RS PA 38 2 0)
+	   (DT NY 298 3 4) ))
+((jb . 114) (bc . 40) (cc . 28) (tc . 52) (cf . 5) (jg . 23) (mh . 24) (jk . 22) (rp . 23) (mr . 113) (rs . 5) (dt . 52))
+> (predict 'NJ
+	'( (AA FL 0 0 0)
+	   (BB NY 322 9 3)
+	   (CC NJ 100 42 2)
+	   (DD PA 9 7 8)
+	   (EE CA 56 0 0)
+	   (FF VA 21 0 0) ))
+((aa . 0) (bb . 76) (cc . 132) (dd . 67) (ee . 5) (ff . 2))
+> (predict 'ME
+	'( (KP MA 0 0 0)
+	   (JZ NY 211 0 5)
+	   (SA NJ 100 10 4)
+	   (ZD WA 26 5 4)
+	   (CA AK 22 1 1) ))
+((kp . 20) (jz . 46) (sa . 40) (zd . 27) (ca . 8))
+> ,exit
+]0;porett96@elvis:~[porett96@elvis ~]$ ^Dexit
+
+Script done on Wed 17 Feb 2016 05:59:16 PM EST

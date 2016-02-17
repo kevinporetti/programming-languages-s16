@@ -1,0 +1,72 @@
+; Kevin Poretti
+; Primary Predictor Scheme  HW Assignment
+; 3:30 section
+
+; Calculates the scores of candidates given in list L.
+; The State represents the state in which the current primaries are held.
+; The State variable is used to award bonus points depending on if the 
+; candidates. Home state is the the same as the current primaries state or in 
+; the same region as the primaries state.
+(define (predict State L)
+	(cond	((null? L)	'())	
+		(else 		(cons 	(calcscore State (car L)) 
+					(predict State (cdr L))))
+))
+
+; Returns the score of a single candidate
+; Score is calculated as follows:
+; Begin with a score of 0. If the candidate's home state is the same as the 
+; current state, add 50 points. If the candidate's home state's region is the 
+; same as the current state's region, add 20 points. Add 1 for every 10 
+; commercials that have aired. (Round down to the nearest integer: 
+; 37 commercials gives 3 points.) Add 1 for every day the candidate has spent 
+; campaigning in the state. Add 5 for every primary or caucus the candidate has 
+; won so far. 
+(define (calcscore CurrState L)
+	(cons (car L) (+ (checkstate  CurrState (gethomestate L)) 
+			 (checkregion CurrState (gethomestate L)) 
+			 (quotient (getcommercials L) 10)
+			 (getdayscampaigning L)
+			 (* (getprimarieswon L) 5)) 
+))
+
+; Checks if the candidates home state is the same as the current primaries
+; state and returns appropriate score
+(define (checkstate CurrState HomeState)
+	(cond	((eq? CurrState HomeState)	50)
+		(else				0)
+))
+
+; Checks if the candidates home state is in the same region as the current
+; primaries state and returns appropriate score 
+(define (checkregion CurrState HomeState)
+	(cond	((eq? (findregion CurrState) (findregion HomeState))	20)
+		(else							0)
+))
+
+; Returns the region of the input State
+(define (findregion State)
+	(cond	((member State '(ME NH VT MA CT RI))			'NEWENGLAND)
+	 	((member State '(NY PA NJ DE MD))			'NORTHEAST)
+	 	((member State '(VA NC SC GA FL AL MS TN KY WV AR LA))	'SOUTHEAST)
+	 	((member State '(OH MI ON IL WI MN))			'LAKES)
+	 	((member State '(IA MO ND SD NE KS OK TX))		'CENTRAL)
+	 	((member State '(MT WY CO NM AZ UT ID NV))		'WEST)
+	 	((member State '(WA OR CA AK HI))			'PACIFIC)
+))
+
+; Returns the candidates home state (second element) from a formated candidate 
+; list
+(define (gethomestate L) (cadr L))
+
+; Returns the number of TV commercials (third element) aired from a formated 
+; candidate list
+(define (getcommercials L)  (caddr L))
+
+; Returns the number of days campaigning in the state (fourth element) from a 
+; formated candidate list
+(define (getdayscampaigning L) (cadddr L))
+
+; Returns the number of primaries or caucuses the candidate has won so far 
+; (fifth element) from a formated candidate list
+(define (getprimarieswon L) (car (cddddr L)))
