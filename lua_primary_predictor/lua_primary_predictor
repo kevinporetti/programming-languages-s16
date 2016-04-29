@@ -10,13 +10,9 @@ region_table.west	 = {'mt', 'wy', 'co', 'nm', 'az', 'ut', 'id', 'nv'}
 region_table.pacific 	 = {'wa', 'or', 'ca', 'ak', 'hi'}
 
 function predict(curr_state, candidate_table)
-	results = {}
-
-	for i,v in pairs(candidate_table) do
-		results[i] = calculateScore(curr_state, candidate)
+	for _,v in pairs(candidate_table) do
+		print(v[1], calculateScore(curr_state, v))
 	end
-
-	return results
 end
 
 function calculateScore(curr_state, candidate)
