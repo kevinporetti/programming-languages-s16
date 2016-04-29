@@ -1,11 +1,13 @@
 Script started on Wed 17 Feb 2016 05:53:13 PM EST
-]0;porett96@elvis:~[porett96@elvis ~]$ scheme48
+(
+rett96@elvis:~porett96@elvis ~]$ scheme48
+
 Welcome to Scheme 48 1.9 (made by root on 2013-09-19)
 See http://s48.org/ for more information.
 Please report bugs to scheme-48-bugs@s48.org.
 Get more information at http://www.s48.org/.
 Type ,? (comma question-mark) for help.
-> ,load p scheme_primary_predictor
+> ,load scheme_primary_predictor
 > (predict 'NH
 	'( (HC NY 78 21 1)
 	   (MO MD 30 10 0)
@@ -41,6 +43,7 @@ Type ,? (comma question-mark) for help.
 	   (CA AK 22 1 1) ))
 ((kp . 20) (jz . 46) (sa . 40) (zd . 27) (ca . 8))
 > ,exit
-]0;porett96@elvis:~[porett96@elvis ~]$ ^Dexit
+(
+rett96@elvis:~porett96@elvis ~]$ exit
 
 Script done on Wed 17 Feb 2016 05:59:16 PM EST

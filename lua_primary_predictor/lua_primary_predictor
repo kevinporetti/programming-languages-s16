@@ -1,0 +1,61 @@
+--Primary Predictor in Lua
+
+region_table = {}
+region_table.new_england = {'me', 'nh', 'vt', 'ma', 'ct', 'ri'}
+region_table.northeast   = {'ny', 'pa', 'nj', 'de', 'md'}
+region_table.southeast   = {'va', 'nc', 'sc', 'ga', 'fl', 'al', 'ms', 'tn', 'ky', 'wv', 'ar', 'la'}
+region_table.lakes       = {'oh', 'mi', 'in', 'il', 'wi', 'mn'}
+region_table.central 	 = {'ia', 'mo', 'nd', 'sd', 'ne', 'ks', 'ok', 'tx'}
+region_table.west	 = {'mt', 'wy', 'co', 'nm', 'az', 'ut', 'id', 'nv'}
+region_table.pacific 	 = {'wa', 'or', 'ca', 'ak', 'hi'}
+
+function predict(curr_state, candidate_table)
+	results = {}
+
+	for i,v in pairs(candidate_table) do
+		results[i] = calculateScore(curr_state, candidate)
+	end
+
+	return results
+end
+
+function calculateScore(curr_state, candidate)
+	score = 0
+
+	name 		 = candidate[1]
+	home_state 	 = candidate[2]
+	tv_comms 	 = candidate[3]
+	days_campaigning = candidate[4]
+	primaries_won    = candidate[5]
+	
+	if home_state == curr_state then
+		score = score + 50
+	end
+
+	if findRegion(home_state) == findRegion(curr_state) then
+		score = score + 20
+	end
+
+	score = score + (math.floor(tv_comms/10) + days_campaigning + (primaries_won*5))
+
+	return score
+end
+
+function findRegion(state)
+	region = 'new_england'
+	
+	for k,v in pairs(region_table) do
+		if contains(v, state) then
+			return k
+		end	
+	end
+end
+
+function contains(table, element)
+	for _,v in pairs(table) do
+		if v == element then
+			return true
+		end
+	end
+	return false
+end
